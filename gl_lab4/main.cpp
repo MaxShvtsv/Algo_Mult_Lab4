@@ -1,7 +1,6 @@
-// Лабораторна робота №4
-// Підготував Шевцов Максим
-// студент групи КМ-01
-
+// Lab. work №4
+// Done by Max Shevtsov
+// Group: KM-01
 #ifdef __APPLE_CC__
 #include <iostream>
 #include <GLUT/glut.h>
@@ -12,19 +11,19 @@
 
 using namespace std;
 
-// для зміни кольору
+// For color change.
 float red = 0.0;
 float green = 1.0;
 float blue = 0.0;
 
-// для оьертання
+// For rotation
 bool is_rotate = false;
 int axis_z = 1;
 int axis_y = 0;
 float spin = 0.0;
 float spin_speed = 0.01;
 
-// обертання
+// Rotation
 void spinDisplay()
 {
 	spin = spin + spin_speed;
@@ -34,7 +33,7 @@ void spinDisplay()
 	glutPostRedisplay();
 }
 
-// обєкт
+// Object
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
 
@@ -47,7 +46,7 @@ void display() {
     glFlush();
 }
 
-// зміна швидкості
+// Change speed
 void arrow_keys(int key, int x, int y){
     switch (key){
         case GLUT_KEY_UP:
@@ -61,7 +60,7 @@ void arrow_keys(int key, int x, int y){
     }
 }
 
-// зміна осі/вихід з програми
+// Chnge axis of rotationg and exit
 void keyboard(unsigned char key, int x, int y){
     switch (key){
         case 27:
@@ -81,11 +80,11 @@ void keyboard(unsigned char key, int x, int y){
     }
 }
 
-// дії з мишею
+// Mouse clicking
 void mouse(int button, int state, int x, int y){
     if (button == GLUT_LEFT_BUTTON && state == GLUT_UP){
         cout << "Left mouse button" << endl;
-        // черноний зелений синій
+        // red green blue
         if (red >= 1.0){
             red = 0.0;
             green = 1.0;
@@ -114,7 +113,7 @@ void mouse(int button, int state, int x, int y){
     }
 }
 
-// початковий стан
+// Initial state
 void init() {
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
@@ -128,7 +127,7 @@ void init() {
     glTranslatef(0, 0, -3);
 }
 
-// точка входу
+// Entry point
 int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
